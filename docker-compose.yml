@@ -1,0 +1,41 @@
+services:
+  mysqldb:
+    image: mysql:8
+    container_name: mysql-b
+    environment:
+      MYSQL_ROOT_PASSWORD: Nee@7483
+      MYSQL_DATABASE: appointment
+    ports:
+      - "1902:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - springboot-mysql-net
+
+  backend:
+    image: neeraj2005/ap-backend:latest
+    container_name: appointmentback
+    ports:
+      - "1903:1901"
+    depends_on:
+      - mysqldb
+    restart: on-failure
+    networks:
+      - springboot-mysql-net
+
+  frontend:
+    image: neeraj2005/ap-frontend:latest
+    container_name: appointmentfront
+    ports:
+      - "1904:82"
+    depends_on:
+      - backend
+    restart: on-failure
+    networks:
+      - springboot-mysql-net
+
+volumes:
+  mysql_data:
+
+networks:
+  springboot-mysql-net:
