@@ -11,7 +11,7 @@
 	<groupId>com.appointment</groupId>
 	<artifactId>Appointment-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	
 	<name>Appointment-backend</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -70,13 +70,17 @@
 	</dependencies>
 
 	<build>
-	<finalName>Appointmentbackend</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+    <finalName>app</finalName>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+                <packaging>jar</packaging>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
 
 </project>
